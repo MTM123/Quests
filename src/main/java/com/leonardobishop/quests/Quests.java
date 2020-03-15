@@ -236,7 +236,6 @@ public class Quests extends JavaPlugin {
 
         String name;
         Material type;
-        int data = 0;
         List<String> lore = new ArrayList<>();
         if (cLore != null) {
             for (String s : cLore) {
@@ -244,18 +243,21 @@ public class Quests extends JavaPlugin {
             }
         }
         name = ChatColor.translateAlternateColorCodes('&', cName);
-        type = Material.matchMaterial(cType);
 
+        String[] typeData = cType.split(":");
+
+        type = Material.matchMaterial(typeData[0]);
+        short data = 0;
+        if (typeData.length == 2) {
+            data = Short.parseShort(typeData[1]);
+        }
 
         if (type == null) {
             type = Material.STONE;
         }
 
-        ItemStack is;
-        if (data == 0)
-            is = new ItemStack(type, 1);
-        else
-            is = new ItemStack(type, 1, (short) data);
+        ItemStack is = new ItemStack(type, 1, data);
+
         ItemMeta ism = is.getItemMeta();
         ism.setLore(lore);
         ism.setDisplayName(name);

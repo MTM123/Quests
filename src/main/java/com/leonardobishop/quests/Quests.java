@@ -1,7 +1,6 @@
 package com.leonardobishop.quests;
 
 import com.leonardobishop.quests.api.QuestsPlaceholders;
-import com.leonardobishop.quests.bstats.Metrics;
 import com.leonardobishop.quests.commands.CommandQuests;
 import com.leonardobishop.quests.events.EventInventory;
 import com.leonardobishop.quests.events.EventPlayerJoin;
@@ -111,11 +110,6 @@ public class Quests extends JavaPlugin {
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             new QuestsPlaceholders(this).register();
-        }
-
-        Metrics metrics = new Metrics(this);
-        if (metrics.isEnabled()) {
-            this.getLogger().log(Level.INFO, "Metrics started. This can be disabled at /plugins/bStats/config.yml.");
         }
 
         questsConfigLoader = new QuestsConfigLoader(this);

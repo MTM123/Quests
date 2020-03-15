@@ -115,7 +115,11 @@ gui:
     lore:
     - "&7Return to the quest menu."
     type: "RED_STAINED_GLASS_PANE"
-
+  quest-cancel-filler:
+    name: ""
+    lore:
+      - ""
+    type: "160:8"
 options:
   # If categories are disabled, quests will be put into one big gui.
   categories-enabled: true
